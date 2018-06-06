@@ -1,5 +1,5 @@
 {
-  "name": "commit",
+  "name": "before-push",
   "version": "0.0.0",
   "description": "Command line interface for semantic versioning node application",
   "main": "index.js",
