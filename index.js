@@ -5,7 +5,8 @@ const package = require('./package.json')
 const CMD = {
   clearAll: () => { process.stdout.write('\u001b[H\u001b[J') },
   clear: line => readline.clearLine(process.stdout, 0, line),
-  write: msg => { process.stdout.write(`${msg}\n`); }
+  write: msg => { process.stdout.write(`${msg}\n`); },
+  read: () => { readline.createInterface({ input: process.stdin, output: process.stdout, }) },
 }
 
 const commit = {
@@ -144,17 +145,20 @@ class TypePrompt extends Scene {
           this.index = this.index - 1
         }
 
-        CMD.clearAll(config.types.length)
+        // CMD.clearAll(config.types.length)
+        CMD.clearAll()
         this.draw()
       break
       case 'down':
         this.index = this.index + 1
         this.index = this.index % config.types.length
 
-        CMD.clearAll(config.types.length)
+        // CMD.clearAll(config.types.length)
+        CMD.clearAll()
         this.draw()
       break
       case 'return':
+        commit.type = config.types[this.index]
         this.next() // Assigned at SceneManager.push
       break
       default:
@@ -168,10 +172,10 @@ class TypePrompt extends Scene {
     
     config.types.map((type, key) => {
       if (key === this.index) {
-        CMD.clear(key)
+        // CMD.clear(key)
         CMD.write(`> ${type.name}`)
       } else {
-        CMD.clear(key)
+        // CMD.clear(key)
         CMD.write(` ${type.name}`)
       }
     })
