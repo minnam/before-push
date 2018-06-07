@@ -3,7 +3,7 @@ const config = require('./.before-push.js')
 const package = require('./package.json')
 
 const CMD = {
-  clearAll: () => { process.stdout.write('\u001b[2J\u001b[0;0H') },
+  clearAll: () => { process.stdout.write('\u001b[H\u001b[J') },
   clear: line => readline.clearLine(process.stdout, 0, line),
   write: msg => { process.stdout.write(`${msg}\n`); }
 }
@@ -19,22 +19,45 @@ const commit = {
 }
 
 /* Main ========================================================================================= */
-const main = () => {
-  readline.createInterface({ input: process.stdin, output: process.stdout, })
-  
+const main = () => {  
   const sceneManager = new SceneManager()
   sceneManager.push(new TypePrompt())
+  
+  // if (config.message) {
+  //   if (config.message.prefix) {
+  //     sceneManager.push(new MessagePrompt('Write prefix for your commit message'))
+  //   }
+  // }
+  sceneManager.push(new MessagePrompt('Write your commit message', 'message.prefix'))
+  sceneManager.push(new MessagePrompt('ab'))
+  
   sceneManager.draw()
 
 }
 
+r1 = readline.createInterface({ input: process.stdin, output: process.stdout, })
+
 /* SceneManager ================================================================================= */
-class SceneManager {
+class SceneManager {  
   constructor () {
     this.index = 0
     this.scenes = []
-
+    this.data = ''
+    this.stdin = process.openStdin();
     CMD.clearAll()
+
+    this.handleData =  (data) => {
+      if (this.index !== null && this.scenes[this.index].handleData) {                
+        this.scenes[this.index].handleData(data)        
+      }
+    }
+
+    this.handleKeypress = (str, key) => {
+      if (this.index !== null && this.scenes[this.index].handleKeypress) {
+        this.scenes[this.index].handleKeypress(str, key)
+      }
+    }
+
   }  
 
   push (scene) {
@@ -42,19 +65,57 @@ class SceneManager {
     this.scenes.push(scene)
   }
 
-  draw () {
-    this.scenes[this.index].draw()
-    process.stdin.on('keypress', (str, key) => {
-      this.scenes[this.index].handleKeypress(key.name)
+  draw () {  
+    if (this.scenes[this.index].draw) {
+      this.scenes[this.index].draw()
+    }      
+    
+    
+
+    process.stdin.resume()
+    process.stdin.setEncoding("ascii")
+    
+    this.stdin.addListener('data', this.handleData)
+
+    this.stdin.addListener('end', () => {
+      if (this.index !== null && this.scenes[this.index].handleEnd) {                
+        this.scenes[this.index].handleEnd(data)        
+      }
     })
+
+    this.stdin.addListener('keypress', this.handleKeypress)   
+   
+  }
+
+  reset () {
+    this.data = ''
+    this.stdin.removeListener('data', this.handleData)
+    this.stdin.removeListener('keypress', this.handleKeypress)
+
+    this.handleData =  (data) => {
+      if (this.index !== null && this.scenes[this.index].handleData) {                
+        this.scenes[this.index].handleData(data)        
+      }
+    }
+
+    this.handleKeypress = (str, key) => {
+      if (this.index !== null && this.scenes[this.index].handleKeypress) {
+        this.scenes[this.index].handleKeypress(str, key)
+      }
+    }
   }
 
   next () {
-    if (this.index + 1 < this.scenes.length) {
+    this.reset()
+    // CMD.clearAll()
+    if (this.index + 1 < this.scenes.length) {      
       this.index++
-    } else {
-      CMD.clearAll()
-      process.stdout.write('done');
+      this.reset()
+      this.draw()      
+    } else {                        
+      console.log(commitis.index)
+      process.stdin.unref()
+      this.index = null      
     }
   }
 }
@@ -66,10 +127,6 @@ class Scene {
   constructor () {
     this.index = 0
   }
-
-  draw () {}
-  handleKeypress () {}
-  next () {}
 }
 
 /* TypePrompt ====================================================================================*/
@@ -78,8 +135,8 @@ class TypePrompt extends Scene {
     super(null)
   }
 
-  handleKeypress (stroke) {
-    switch (stroke) {
+  handleKeypress (str, key) {    
+    switch (key.name) {
       case 'up':
         if (this.index - 1 === -1) {
           this.index = config.types.length - 1
@@ -100,6 +157,9 @@ class TypePrompt extends Scene {
       case 'return':
         this.next() // Assigned at SceneManager.push
       break
+      default:
+        CMD.clearAll(config.types.length)
+        this.draw()
     }
   }
 
@@ -115,6 +175,37 @@ class TypePrompt extends Scene {
         CMD.write(` ${type.name}`)
       }
     })
+  }
+}
+
+class MessagePrompt extends Scene {
+  constructor (message) {
+    super(null)
+    this.question = `${message}\n`
+  }
+
+  handleData (chunk) {        
+    this.data += chunk
+  }
+
+  handleKeypress (str, key) {
+    switch (key.name) {
+      case 'return':
+        commit.message = this.data
+        this.next() // Assigned at SceneManager.push
+      break
+      default:
+        // this.draw()
+    }
+  }
+
+  handleEnd () {
+    this.next()
+  }
+
+  draw () {
+    CMD.write(this.question)
+    CMD.write(this.data)
   }
 }
 
