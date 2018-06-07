@@ -29,14 +29,14 @@ const main = () => {
   //     sceneManager.push(new MessagePrompt('Write prefix for your commit message'))
   //   }
   // }
-  sceneManager.push(new MessagePrompt('Write your commit message', 'message.prefix'))
-  sceneManager.push(new MessagePrompt('ab'))
+  sceneManager.push(new MessagePrompt('Write your commit message 1'))
+  sceneManager.push(new MessagePrompt('Write your commit message 2'))
   
   sceneManager.draw()
 
 }
 
-r1 = readline.createInterface({ input: process.stdin, output: process.stdout, })
+rl = readline.createInterface({ input: process.stdin, output: process.stdout, historySize: 0})
 
 /* SceneManager ================================================================================= */
 class SceneManager {  
@@ -108,13 +108,12 @@ class SceneManager {
 
   next () {
     this.reset()
-    // CMD.clearAll()
     if (this.index + 1 < this.scenes.length) {      
       this.index++
       this.reset()
       this.draw()      
     } else {                        
-      console.log(commitis.index)
+      console.log(this.index)
       process.stdin.unref()
       this.index = null      
     }
@@ -145,7 +144,6 @@ class TypePrompt extends Scene {
           this.index = this.index - 1
         }
 
-        // CMD.clearAll(config.types.length)
         CMD.clearAll()
         this.draw()
       break
@@ -153,7 +151,6 @@ class TypePrompt extends Scene {
         this.index = this.index + 1
         this.index = this.index % config.types.length
 
-        // CMD.clearAll(config.types.length)
         CMD.clearAll()
         this.draw()
       break
@@ -162,8 +159,8 @@ class TypePrompt extends Scene {
         this.next() // Assigned at SceneManager.push
       break
       default:
-        CMD.clearAll(config.types.length)
-        this.draw()
+        // CMD.clearAll()
+        // this.draw()
     }
   }
 
@@ -172,10 +169,8 @@ class TypePrompt extends Scene {
     
     config.types.map((type, key) => {
       if (key === this.index) {
-        // CMD.clear(key)
         CMD.write(`> ${type.name}`)
       } else {
-        // CMD.clear(key)
         CMD.write(` ${type.name}`)
       }
     })
@@ -185,7 +180,7 @@ class TypePrompt extends Scene {
 class MessagePrompt extends Scene {
   constructor (message) {
     super(null)
-    this.question = `${message}\n`
+    this.question = `${message}`
   }
 
   handleData (chunk) {        
@@ -199,7 +194,7 @@ class MessagePrompt extends Scene {
         this.next() // Assigned at SceneManager.push
       break
       default:
-        // this.draw()
+        
     }
   }
 
@@ -209,7 +204,8 @@ class MessagePrompt extends Scene {
 
   draw () {
     CMD.write(this.question)
-    CMD.write(this.data)
+    rl.prompt()
+    //CMD.write(this.data)
   }
 }
 
