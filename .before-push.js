@@ -1,9 +1,18 @@
 const config = {
+  message: {
+    prefix: true
+  },
   types: [
     {
       name: 'phase',
       level: 0,
       postfix: '',      
+      before: () => {
+
+      },
+      after: () => {
+
+      }
     },
     {
       name: 'feat',
