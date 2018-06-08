@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/minnam/commit/issues"
   },
-  "homepage": "https://github.com/minnam/commit#readme"
+  "homepage": "https://github.com/minnam/commit#readme",
+  "dependencies": {
+    "ansi-regex": "^3.0.0"
+  }
 }
