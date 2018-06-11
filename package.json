@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/minnam/commit#readme",
   "dependencies": {
-    "check-types": "^7.4.0",
+    "check-types": "^7.4.0"
   }
 }

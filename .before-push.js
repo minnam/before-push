@@ -1,55 +1,274 @@
 const config = {
-  message: {
-    prefix: true
-  },
-  types: [
+  commitTypes: [
     {
-      name: 'phase',
-      level: 0,
-      postfix: '',      
-      before: () => {
+      name: 'Phase',
+      requrieMessage: true, // boolean   
+      // Specifies whether a commit message is required or not.
 
-      },
-      after: () => {
+      requrieMessagePrefix: true, // boolean  
+      // Determines if the commit message should have prefixed text.
 
-      }
+      requrieMessagePostfix: true, //boolean
+      // Determines if the commit message should have appended text.
+
+      updateChangelog: true, // boolean
+      // Determines if the changelog should be updated when running a commit of this type.
+
+      omitPrefix: true, // boolean
+      // Specifies if the prefix should be omitted from the changelog entry.
+      
+      omitPostfix: true, // boolean
+      // Specifies if the postfix should be omitted from the changelog entry.
+      
+      addDate: true, // boolean
+      // Determines if the changelog entry should be formatted with a date.
+
+      addVersionNumbering: true, // boolean           
+      // Determines if the changelog entry should be formatted with a version number.
+
+      versionIndex: 0, // integer
+      // Specifies which digit (index) of the changelog's version numbering to increment.
+
+      // level: 0,
+      // postfix: '',      
     },
     {
-      name: 'feat',
-      level: 1,
-      postfix: ''
+      name: 'Feature',
+      requrieMessage: true, // boolean   
+      // Specifies whether a commit message is required or not.
+
+      requrieMessagePrefix: true, // boolean  
+      // Determines if the commit message should have prefixed text.
+
+      requrieMessagePostfix: true, //boolean
+      // Determines if the commit message should have appended text.
+
+      updateChangelog: true, // boolean
+      // Determines if the changelog should be updated when running a commit of this type.
+
+      omitPrefix: true, // boolean
+      // Specifies if the prefix should be omitted from the changelog entry.
+      
+      omitPostfix: true, // boolean
+      // Specifies if the postfix should be omitted from the changelog entry.
+      
+      addDate: true, // boolean
+      // Determines if the changelog entry should be formatted with a date.
+
+      addVersionNumbering: true, // boolean           
+      // Determines if the changelog entry should be formatted with a version number.
+
+      versionIndex: 0, // integer
+      // Specifies which digit (index) of the changelog's version numbering to increment.
+
+      // level: 1,
+      // postfix: ''
     },
     {
-      name: 'fix',
-      level: 2,
-      postfix: '',
+      name: 'Fix',
+      requrieMessage: true, // boolean   
+      // Specifies whether a commit message is required or not.
+
+      requrieMessagePrefix: true, // boolean  
+      // Determines if the commit message should have prefixed text.
+
+      requrieMessagePostfix: true, //boolean
+      // Determines if the commit message should have appended text.
+
+      updateChangelog: true, // boolean
+      // Determines if the changelog should be updated when running a commit of this type.
+
+      omitPrefix: true, // boolean
+      // Specifies if the prefix should be omitted from the changelog entry.
+      
+      omitPostfix: true, // boolean
+      // Specifies if the postfix should be omitted from the changelog entry.
+      
+      addDate: true, // boolean
+      // Determines if the changelog entry should be formatted with a date.
+
+      addVersionNumbering: true, // boolean           
+      // Determines if the changelog entry should be formatted with a version number.
+
+      versionIndex: 0, // integer
+      // Specifies which digit (index) of the changelog's version numbering to increment.
+
+      // level: 2,
+      // postfix: '',
     },
     {
-      name: 'docs',
-      level: 2,
-      postfix: '',
+      name: 'Docs',
+      requrieMessage: true, // boolean   
+      // Specifies whether a commit message is required or not.
+
+      requrieMessagePrefix: true, // boolean  
+      // Determines if the commit message should have prefixed text.
+
+      requrieMessagePostfix: true, //boolean
+      // Determines if the commit message should have appended text.
+
+      updateChangelog: true, // boolean
+      // Determines if the changelog should be updated when running a commit of this type.
+
+      omitPrefix: true, // boolean
+      // Specifies if the prefix should be omitted from the changelog entry.
+      
+      omitPostfix: true, // boolean
+      // Specifies if the postfix should be omitted from the changelog entry.
+      
+      addDate: true, // boolean
+      // Determines if the changelog entry should be formatted with a date.
+
+      addVersionNumbering: true, // boolean           
+      // Determines if the changelog entry should be formatted with a version number.
+
+      versionIndex: 0, // integer
+      // Specifies which digit (index) of the changelog's version numbering to increment.
+
+      // level: 2,
+      // postfix: '',
     },
     {
-      name: 'style',
-      level: 2,
-      postfix: '',
+      name: 'Style',
+      requrieMessage: true, // boolean   
+      // Specifies whether a commit message is required or not.
+
+      requrieMessagePrefix: true, // boolean  
+      // Determines if the commit message should have prefixed text.
+
+      requrieMessagePostfix: true, //boolean
+      // Determines if the commit message should have appended text.
+
+      updateChangelog: true, // boolean
+      // Determines if the changelog should be updated when running a commit of this type.
+
+      omitPrefix: true, // boolean
+      // Specifies if the prefix should be omitted from the changelog entry.
+      
+      omitPostfix: true, // boolean
+      // Specifies if the postfix should be omitted from the changelog entry.
+      
+      addDate: true, // boolean
+      // Determines if the changelog entry should be formatted with a date.
+
+      addVersionNumbering: true, // boolean           
+      // Determines if the changelog entry should be formatted with a version number.
+
+      versionIndex: 0, // integer
+      // Specifies which digit (index) of the changelog's version numbering to increment.
+
+      // level: 2,
+      // postfix: '',
     },
     {
-      name: 'refactor',
-      level: 2,
-      postfix: '',
+      name: 'Refactor',
+      requrieMessage: true, // boolean   
+      // Specifies whether a commit message is required or not.
+
+      requrieMessagePrefix: true, // boolean  
+      // Determines if the commit message should have prefixed text.
+
+      requrieMessagePostfix: true, //boolean
+      // Determines if the commit message should have appended text.
+
+      updateChangelog: true, // boolean
+      // Determines if the changelog should be updated when running a commit of this type.
+
+      omitPrefix: true, // boolean
+      // Specifies if the prefix should be omitted from the changelog entry.
+      
+      omitPostfix: true, // boolean
+      // Specifies if the postfix should be omitted from the changelog entry.
+      
+      addDate: true, // boolean
+      // Determines if the changelog entry should be formatted with a date.
+
+      addVersionNumbering: true, // boolean           
+      // Determines if the changelog entry should be formatted with a version number.
+
+      versionIndex: 0, // integer
+      // Specifies which digit (index) of the changelog's version numbering to increment.
+
+      // level: 2,
+      // postfix: '',
     },
     {
-      name: 'test',
-      level: 2,
-      postfix: '',
+      name: 'Test',
+      requrieMessage: true, // boolean   
+      // Specifies whether a commit message is required or not.
+
+      requrieMessagePrefix: true, // boolean  
+      // Determines if the commit message should have prefixed text.
+
+      requrieMessagePostfix: true, //boolean
+      // Determines if the commit message should have appended text.
+
+      updateChangelog: true, // boolean
+      // Determines if the changelog should be updated when running a commit of this type.
+
+      omitPrefix: true, // boolean
+      // Specifies if the prefix should be omitted from the changelog entry.
+      
+      omitPostfix: true, // boolean
+      // Specifies if the postfix should be omitted from the changelog entry.
+      
+      addDate: true, // boolean
+      // Determines if the changelog entry should be formatted with a date.
+
+      addVersionNumbering: true, // boolean           
+      // Determines if the changelog entry should be formatted with a version number.
+
+      versionIndex: 0, // integer
+      // Specifies which digit (index) of the changelog's version numbering to increment.
+
+      // level: 2,
+      // postfix: '',
     },
     {
-      name: 'chore',
-      level: 2,
-      postfix: '',
+      name: 'Chore',
+      requrieMessage: true, // boolean   
+      // Specifies whether a commit message is required or not.
+
+      requrieMessagePrefix: true, // boolean  
+      // Determines if the commit message should have prefixed text.
+
+      requrieMessagePostfix: true, //boolean
+      // Determines if the commit message should have appended text.
+
+      updateChangelog: true, // boolean
+      // Determines if the changelog should be updated when running a commit of this type.
+
+      omitPrefix: true, // boolean
+      // Specifies if the prefix should be omitted from the changelog entry.
+      
+      omitPostfix: true, // boolean
+      // Specifies if the postfix should be omitted from the changelog entry.
+      
+      addDate: true, // boolean
+      // Determines if the changelog entry should be formatted with a date.
+
+      addVersionNumbering: true, // boolean           
+      // Determines if the changelog entry should be formatted with a version number.
+
+      versionIndex: 0, // integer
+      // Specifies which digit (index) of the changelog's version numbering to increment.
+
+      // level: 2,
+      // postfix: '',
     }
-  ]
+  ],
+  versionFormat: {
+    useCustomVersion: false, // boolean
+    // Specifies if the version numbering displayed in the changelog should follow default numbering
+    // or the format specified in the 'custom' property.
+    
+    custom: '#.#.#' // string
+    // Defines a custom template for the changlog numbering.
+    // Digits are placed in the string at the locations designated by the '#' character.
+    // Examples:
+    // A version number like: 1.12.5 would use a format like: #.#.#
+    // A version number like: 0-1-6.1 would use a format like: #-#-#.# 
+},
 }
 
 module.exports = config
