@@ -2,13 +2,13 @@ const config = {
   commitTypes: [
     {
       name: 'Phase',
-      requrieMessage: true, // boolean   
+      requireMessage: true, // boolean   
       // Specifies whether a commit message is required or not.
 
-      requrieMessagePrefix: true, // boolean  
+      requireMessagePrefix: true, // boolean  
       // Determines if the commit message should have prefixed text.
 
-      requrieMessagePostfix: true, //boolean
+      requireMessagePostfix: true, //boolean
       // Determines if the commit message should have appended text.
 
       updateChangelog: true, // boolean
@@ -34,13 +34,13 @@ const config = {
     },
     {
       name: 'Feature',
-      requrieMessage: true, // boolean   
+      requireMessage: true, // boolean   
       // Specifies whether a commit message is required or not.
 
-      requrieMessagePrefix: true, // boolean  
+      requireMessagePrefix: true, // boolean  
       // Determines if the commit message should have prefixed text.
 
-      requrieMessagePostfix: true, //boolean
+      requireMessagePostfix: true, //boolean
       // Determines if the commit message should have appended text.
 
       updateChangelog: true, // boolean
@@ -66,13 +66,13 @@ const config = {
     },
     {
       name: 'Fix',
-      requrieMessage: true, // boolean   
+      requireMessage: true, // boolean   
       // Specifies whether a commit message is required or not.
 
-      requrieMessagePrefix: true, // boolean  
+      requireMessagePrefix: true, // boolean  
       // Determines if the commit message should have prefixed text.
 
-      requrieMessagePostfix: true, //boolean
+      requireMessagePostfix: false, //boolean
       // Determines if the commit message should have appended text.
 
       updateChangelog: true, // boolean
@@ -98,13 +98,13 @@ const config = {
     },
     {
       name: 'Docs',
-      requrieMessage: true, // boolean   
+      requireMessage: false, // boolean   
       // Specifies whether a commit message is required or not.
 
-      requrieMessagePrefix: true, // boolean  
+      requireMessagePrefix: true, // boolean  
       // Determines if the commit message should have prefixed text.
 
-      requrieMessagePostfix: true, //boolean
+      requireMessagePostfix: true, //boolean
       // Determines if the commit message should have appended text.
 
       updateChangelog: true, // boolean
@@ -130,13 +130,13 @@ const config = {
     },
     {
       name: 'Style',
-      requrieMessage: true, // boolean   
+      requireMessage: true, // boolean   
       // Specifies whether a commit message is required or not.
 
-      requrieMessagePrefix: true, // boolean  
+      requireMessagePrefix: true, // boolean  
       // Determines if the commit message should have prefixed text.
 
-      requrieMessagePostfix: true, //boolean
+      requireMessagePostfix: true, //boolean
       // Determines if the commit message should have appended text.
 
       updateChangelog: true, // boolean
@@ -162,13 +162,13 @@ const config = {
     },
     {
       name: 'Refactor',
-      requrieMessage: true, // boolean   
+      requireMessage: true, // boolean   
       // Specifies whether a commit message is required or not.
 
-      requrieMessagePrefix: true, // boolean  
+      requireMessagePrefix: true, // boolean  
       // Determines if the commit message should have prefixed text.
 
-      requrieMessagePostfix: true, //boolean
+      requireMessagePostfix: false, //boolean
       // Determines if the commit message should have appended text.
 
       updateChangelog: true, // boolean
@@ -194,13 +194,13 @@ const config = {
     },
     {
       name: 'Test',
-      requrieMessage: true, // boolean   
+      requireMessage: true, // boolean   
       // Specifies whether a commit message is required or not.
 
-      requrieMessagePrefix: true, // boolean  
+      requireMessagePrefix: false, // boolean  
       // Determines if the commit message should have prefixed text.
 
-      requrieMessagePostfix: true, //boolean
+      requireMessagePostfix: false, //boolean
       // Determines if the commit message should have appended text.
 
       updateChangelog: true, // boolean
@@ -226,13 +226,13 @@ const config = {
     },
     {
       name: 'Chore',
-      requrieMessage: true, // boolean   
+      requireMessage: false, // boolean   
       // Specifies whether a commit message is required or not.
 
-      requrieMessagePrefix: true, // boolean  
+      requireMessagePrefix: true, // boolean  
       // Determines if the commit message should have prefixed text.
 
-      requrieMessagePostfix: true, //boolean
+      requireMessagePostfix: true, //boolean
       // Determines if the commit message should have appended text.
 
       updateChangelog: true, // boolean
