@@ -20,13 +20,17 @@ class PromptManager {
 
   }
 
+  getData () {
+    return this.data
+  }
+
   setData (data) {
     this.data = { ...data }
   }
 
   push (prompt) {
     prompt.next = this.next.bind(this)
-    prompt.getData = () => this.data
+    prompt.getData = this.getData.bind(this)
     prompt.setData = this.setData.bind(this)
     this.prompts.push(prompt)
   }
@@ -58,16 +62,26 @@ class PromptManager {
     }
   }
 
-  next () {
+  next (i) {
     this.reset()
-    if (this.index + 1 < this.prompts.length) {
+    // if (this.index + 1 < this.prompts.length) {
+    if (this.index + i < this.prompts.length) {
       process.stdout.clearLine()
-      this.index++
+      // this.index++
+      this.index += i
       this.reset()
       this.draw()
     } else {
+      // Finished prompts
       process.stdin.unref()
+      this._done(this.getData())
       this.index = null
+    }
+  }
+
+  done (done) {
+    if (typeof done === 'function') {
+      this._done = done
     }
   }
 }

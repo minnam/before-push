@@ -34,12 +34,12 @@ class Prompt {
       i++
     }
 
+    this.process(this.parseInput(this.data) || this.items[this.index])
+
     if (this.done) {
-      this.process(this.parseInput(this.data) || this.items[this.index])
-      this.done(this.parseInput(this.data) || this.items[this.index], this.next)
+      this.done(this.getData(), this.parseInput(this.data) || this.items[this.index], this.next)
     } else {
-      this.process(this.parseInput(this.data) || this.items[this.index])
-      this.next() // Assigned at PromptManager.push
+      this.next(1) // Assigned at PromptManager.push
     }
   }
 
@@ -61,7 +61,6 @@ class Prompt {
       }
       i--
     }
-    console.log('data', data)
 
     if (!this.getData()) {
       this.setData({...object})
@@ -75,7 +74,6 @@ class Prompt {
   }
 
   merge (obj1, obj2, index) {
-    // console.log(index, '--------------------------------------')
     let mergedObject = {}
     Object.keys(obj1).map(key => {
       if (obj2[key]) {
