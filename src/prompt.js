@@ -4,14 +4,13 @@ const Color = require('./color')
 const INPUT_BLACKLIST = require('./input-blacklist')
 
 class Prompt {
-  constructor (question, key, validations, done, commit) {
+  constructor (message, key, validations, done) {
     this.index = 0
-    this.question = question
+    this.message = message
     this.key = key
     this.validations = validations || []
     this.data = ''
     this.done = done
-    this.commit = commit
     CMD.interface.setPrompt('')
     this.color = new Color()
   }
@@ -21,12 +20,11 @@ class Prompt {
       CMD.clear(1)
     }
 
-    CMD.write(`${this.question} ${this.color.red(error) || ''}`)
+    CMD.write(`${this.message} ${this.color.red(error) || ''}`)
     CMD.interface.prompt()
   }
 
   proceed () {
-    // console.log(this.data.length)
     let i = 0
     while (i < this.validations.length) {
       if (this.validations[i].callback(this.data)) {
@@ -40,6 +38,7 @@ class Prompt {
       this.process(this.parseInput(this.data) || this.items[this.index])
       this.done(this.parseInput(this.data) || this.items[this.index], this.next)
     } else {
+      this.process(this.parseInput(this.data) || this.items[this.index])
       this.next() // Assigned at PromptManager.push
     }
   }
@@ -62,6 +61,7 @@ class Prompt {
       }
       i--
     }
+    console.log('data', data)
 
     if (!this.getData()) {
       this.setData({...object})

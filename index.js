@@ -1,5 +1,5 @@
-const PromptManager = require('./src/prompt-manager')
 const config = require('./.before-push.js')
+const PromptManager = require('./src/prompt-manager')
 const SelectPrompt = require('./src/select-prompt')
 const MessagePrompt = require('./src/message-prompt')
 
@@ -9,8 +9,6 @@ const validations = {
     message: 'required'
   }
 }
-
-let commit
 // version: package.version.split('.'),
 
 /* Main ========================================================================================= */
@@ -33,13 +31,25 @@ const main = () => {
   //
 
   promptManager.push(
-    new SelectPrompt(
-      'What type of commit is this?',
-      'type',
-      null,
+    new SelectPrompt(...{message: 'test', key: 'type', validations: null, done: null},
+      // {
+      //   message: 'What type of commit is this?',
+      //   key: 'type',
+      //   validations: null,
+      //   done: null,
+      // },
+      // 'What type of commit is this?',
+      // 'type',
+      // null,
       config.commitTypes
-    ), commit)
-  promptManager.push(new SelectPrompt('Is this a part of release?', 'isRelease', null, [{name: 'Yes'}, {name: 'No'}]), commit)
+    ))
+  promptManager.push(
+    new SelectPrompt(
+      'Is this a part of release?',
+      'isRelease',
+      null,
+      [{name: 'Yes'}, {name: 'No'}]
+    ))
   promptManager.push(
     new MessagePrompt(
       'Write your commit prefix',

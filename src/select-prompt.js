@@ -3,11 +3,10 @@ const Prompt = require('./prompt')
 const Color = require('./color')
 
 class SelectPrompt extends Prompt {
-  constructor (question, key, validations, items, commit) {
-    super(question, key, validations)
+  constructor (message, key, validations, items) {
+    super(message, key, validations)
     this.isRaw = true
     this.items = items
-    this.commit = commit
     this.color = new Color()
   }
 

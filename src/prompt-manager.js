@@ -66,7 +66,6 @@ class PromptManager {
       this.reset()
       this.draw()
     } else {
-      console.log(this.data)
       process.stdin.unref()
       this.index = null
     }

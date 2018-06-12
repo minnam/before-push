@@ -1,12 +1,11 @@
 const Prompt = require('./prompt')
 
 class MessagePrompt extends Prompt {
-  constructor (question, key, validations, commit) {
-    super(question, key, validations)
+  constructor (message, key, validations) {
+    super(message, key, validations)
     this.isRaw = false
     this.cursor = 0
     this.cursorFlag = false
-    this.commit = commit
   }
 
   handleData (input) {
