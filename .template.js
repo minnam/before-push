@@ -3,16 +3,16 @@ const configTemplate = {
     // for a type of commit.
     commitType: [
         {
-            typeName: 'name', // string           
+            name: 'name', // string           
             // The name of the commit type that is displayed in the commit type propmt.
 
-            requrieMessage: true, // boolean   
+            requireMessage: true, // boolean   
             // Specifies whether a commit message is required or not.
 
-            requrieMessagePrefix: true, // boolean  
+            requireMessagePrefix: true, // boolean  
             // Determines if the commit message should have prefixed text.
 
-            requrieMessagePostfix: true, //boolean
+            requireMessagePostfix: true, //boolean
             // Determines if the commit message should have appended text.
 
             updateChangelog: true, // boolean
