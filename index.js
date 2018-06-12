@@ -31,37 +31,45 @@ const main = () => {
   //
 
   promptManager.push(
-    new SelectPrompt(...{message: 'test', key: 'type', validations: null, done: null},
-      // {
-      //   message: 'What type of commit is this?',
-      //   key: 'type',
-      //   validations: null,
-      //   done: null,
-      // },
-      // 'What type of commit is this?',
-      // 'type',
-      // null,
+    new SelectPrompt(
+      {
+        message: 'What kind of commit is this?',
+        key: 'type',
+        validations: null,
+        done: null,
+      },
       config.commitTypes
-    ))
+    )
+  )
   promptManager.push(
     new SelectPrompt(
-      'Is this a part of release?',
-      'isRelease',
-      null,
+      {
+        message: 'Is this a part of a release?',
+        key: 'isRelease',
+        validations: null,
+        done: null,
+      },
       [{name: 'Yes'}, {name: 'No'}]
-    ))
+    )
+  )
   promptManager.push(
     new MessagePrompt(
-      'Write your commit prefix',
-      'message.prefix',
-      [validations.required],
-      null,
-    ))
+      {
+        message: 'Write your commit prefix:',
+        key: 'message.prefix',
+        validations: [validations.required],
+        done: null,
+      }
+    )
+  )
   promptManager.push(
     new MessagePrompt(
-      'Write your commit message',
-      'message.content',
-      [validations.required]
+      {
+        message: 'Write your commit message:',
+        key: 'message.content',
+        validations: [validations.required],
+        done: null,
+      }
     )
   )
 

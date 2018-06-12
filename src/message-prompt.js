@@ -1,8 +1,15 @@
 const Prompt = require('./prompt')
 
 class MessagePrompt extends Prompt {
-  constructor (message, key, validations) {
-    super(message, key, validations)
+  // constructor (message, key, validations) {
+  //   super(message, key, validations)
+  //   this.isRaw = false
+  //   this.cursor = 0
+  //   this.cursorFlag = false
+  // }
+
+  constructor (props) {
+    super(props)
     this.isRaw = false
     this.cursor = 0
     this.cursorFlag = false
