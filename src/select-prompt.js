@@ -3,13 +3,6 @@ const Prompt = require('./prompt')
 const Color = require('./color')
 
 class SelectPrompt extends Prompt {
-  // constructor (message, key, validations, items) {
-  //   super(message, key, validations)
-  //   this.isRaw = true
-  //   this.items = items
-  //   this.color = new Color()
-  // }
-
   constructor (props, items) {
     super(props)
     this.isRaw = true

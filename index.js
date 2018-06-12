@@ -9,7 +9,6 @@ const validations = {
     message: 'required'
   }
 }
-// version: package.version.split('.'),
 
 /* Main ========================================================================================= */
 const main = () => {
@@ -25,10 +24,9 @@ const main = () => {
   //   }
   // }
 
-  // 1:  ({question: '????', key, validations, done}, {items})
-  // 2: add done callback param to Prompt Class (index, value, next) => {}
-  //           -- in proceed function, done (this.index, value???, this.next)
-  //
+  // TODO:
+  // add done callback param to Prompt Class (index, value, next) => {}
+  // in proceed function, done (this.index, value???, this.next)
 
   promptManager.push(
     new SelectPrompt(
@@ -72,9 +70,7 @@ const main = () => {
       }
     )
   )
-
   promptManager.draw()
-
 }
 
 /* Run ========================================================================================== */

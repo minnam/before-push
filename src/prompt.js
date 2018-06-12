@@ -4,16 +4,6 @@ const Color = require('./color')
 const INPUT_BLACKLIST = require('./input-blacklist')
 
 class Prompt {
-  // constructor (message, key, validations, done) {
-  //   this.index = 0
-  //   this.message = message
-  //   this.key = key
-  //   this.validations = validations || []
-  //   this.data = ''
-  //   this.done = done
-  //   CMD.interface.setPrompt('')
-  //   this.color = new Color()
-  // }
   constructor (props) {
     this.index = 0
     this.message = props.message
