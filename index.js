@@ -1,3 +1,4 @@
+// const fs              = require('fs')
 const config          = require('./.before-push.js')
 const ConfigValidator = require('./src/config-validator')
 const PromptManager   = require('./src/prompt-manager')
@@ -13,6 +14,33 @@ const validations = {
 
 /* Main ========================================================================================= */
 const main = () => {
+
+  const childProcess = require('child_process')
+
+  const git = childProcess.exec('git add .', function (error, stdout, stderr) {
+    if (error) {
+      console.log(error.stack)
+      console.log('Error code: '+error.code)
+      console.log('Signal received: '+error.signal)
+    }
+    console.log('Child Process STDOUT: '+stdout)
+    console.log('Child Process STDERR: '+stderr)
+  })
+
+  git.on('exit', function (code) {
+    console.log('Child process exited with exit code '+code)
+  })
+
+  const args = process.argv.slice(2)
+
+  switch (args[0]) {
+  case 'init':
+    // perform initialization actions
+    break
+  default:
+    // print usage information
+  }
+
   try {
     const cfgValidator = new ConfigValidator(config)
     cfgValidator.checkConfig()
@@ -70,18 +98,53 @@ const main = () => {
       new MessagePrompt(
         {
           message: 'Write your commit postfix:',
-          key: 'message.hello',
+          key: 'message.postfix',
           validations: [validations.required],
           done: null,
         }
       )
     )
+
     promptManager.draw()
 
     promptManager.done((data) => {
       console.log('--- done ---')
-      console.log(data)
+      let entry = ''
+      if(data.type.updateChangelog) {
+        entry = data.type.name
+        if(!data.type.omitPrefix) {
+          entry += `: ${data.message.prefix} `
+        }
+        entry += data.message.content
+        if(!data.type.omitPostfix) {
+          entry += ' ' + data.message.postfix
+        }
+      }
+      console.log(entry)
     })
+
+    // const fakelog = '## [#.#.#] - yyyy/mm/dd\n'
+    //   + '- change 1\n'
+    //   + '- change 2\n'
+
+    // fs.open('testlog.md', 'a', (err, fd) => {
+    //   if(err) {
+    //     throw err
+    //   }
+    //   console.log('testlog.md opened')
+    //   fs.write(fd, fakelog, 0, 'utf8', (err, written, string) => {
+    //     if(err) {
+    //       throw err
+    //     }
+    //     console.log('writing to testlog.md . . .')
+    //     fs.close(fd, (err) => {
+    //       if(err) {
+    //         throw err
+    //       }
+    //       console.log('testlog.md closed')
+    //     })
+    //   })
+    // })
   } catch (err) {
     console.log(err.message)
   }
