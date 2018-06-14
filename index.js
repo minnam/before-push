@@ -10,7 +10,7 @@ const validations = {
     message: 'required'
   }
 }
-// const configg = 1
+
 /* Main ========================================================================================= */
 const main = () => {
   try {
