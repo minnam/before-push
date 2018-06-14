@@ -14,10 +14,10 @@ const config = {
       updateChangelog: true, // boolean
       // Determines if the changelog should be updated when running a commit of this type.
 
-      omitPrefix: true, // boolean
+      includePrefix: true, // boolean
       // Specifies if the prefix should be omitted from the changelog entry.
       
-      omitPostfix: true, // boolean
+      includePostfix: true, // boolean
       // Specifies if the postfix should be omitted from the changelog entry.
       
       addDate: true, // boolean
@@ -43,10 +43,10 @@ const config = {
       updateChangelog: true, // boolean
       // Determines if the changelog should be updated when running a commit of this type.
 
-      omitPrefix: false, // boolean
+      includePrefix: false, // boolean
       // Specifies if the prefix should be omitted from the changelog entry.
       
-      omitPostfix: false, // boolean
+      includePostfix: false, // boolean
       // Specifies if the postfix should be omitted from the changelog entry.
       
       addDate: true, // boolean
@@ -72,10 +72,10 @@ const config = {
       updateChangelog: true, // boolean
       // Determines if the changelog should be updated when running a commit of this type.
 
-      omitPrefix: true, // boolean
+      includePrefix: true, // boolean
       // Specifies if the prefix should be omitted from the changelog entry.
       
-      omitPostfix: true, // boolean
+      includePostfix: true, // boolean
       // Specifies if the postfix should be omitted from the changelog entry.
       
       addDate: true, // boolean
@@ -101,10 +101,10 @@ const config = {
       updateChangelog: true, // boolean
       // Determines if the changelog should be updated when running a commit of this type.
 
-      omitPrefix: true, // boolean
+      includePrefix: true, // boolean
       // Specifies if the prefix should be omitted from the changelog entry.
       
-      omitPostfix: true, // boolean
+      includePostfix: true, // boolean
       // Specifies if the postfix should be omitted from the changelog entry.
       
       addDate: true, // boolean
@@ -130,10 +130,10 @@ const config = {
       updateChangelog: true, // boolean
       // Determines if the changelog should be updated when running a commit of this type.
 
-      omitPrefix: true, // boolean
+      includePrefix: true, // boolean
       // Specifies if the prefix should be omitted from the changelog entry.
       
-      omitPostfix: true, // boolean
+      includePostfix: true, // boolean
       // Specifies if the postfix should be omitted from the changelog entry.
       
       addDate: true, // boolean
@@ -159,10 +159,10 @@ const config = {
       updateChangelog: true, // boolean
       // Determines if the changelog should be updated when running a commit of this type.
 
-      omitPrefix: true, // boolean
+      includePrefix: true, // boolean
       // Specifies if the prefix should be omitted from the changelog entry.
       
-      omitPostfix: true, // boolean
+      includePostfix: true, // boolean
       // Specifies if the postfix should be omitted from the changelog entry.
       
       addDate: true, // boolean
@@ -188,10 +188,10 @@ const config = {
       updateChangelog: true, // boolean
       // Determines if the changelog should be updated when running a commit of this type.
 
-      omitPrefix: true, // boolean
+      includePrefix: true, // boolean
       // Specifies if the prefix should be omitted from the changelog entry.
       
-      omitPostfix: true, // boolean
+      includePostfix: true, // boolean
       // Specifies if the postfix should be omitted from the changelog entry.
       
       addDate: true, // boolean
@@ -217,10 +217,10 @@ const config = {
       updateChangelog: true, // boolean
       // Determines if the changelog should be updated when running a commit of this type.
 
-      omitPrefix: true, // boolean
+      includePrefix: true, // boolean
       // Specifies if the prefix should be omitted from the changelog entry.
       
-      omitPostfix: true, // boolean
+      includePostfix: true, // boolean
       // Specifies if the postfix should be omitted from the changelog entry.
       
       addDate: true, // boolean

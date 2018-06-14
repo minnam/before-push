@@ -15,21 +15,21 @@ const validations = {
 /* Main ========================================================================================= */
 const main = () => {
 
-  const childProcess = require('child_process')
+  // const childProcess = require('child_process')
 
-  const git = childProcess.exec('git add .', function (error, stdout, stderr) {
-    if (error) {
-      console.log(error.stack)
-      console.log('Error code: '+error.code)
-      console.log('Signal received: '+error.signal)
-    }
-    console.log('Child Process STDOUT: '+stdout)
-    console.log('Child Process STDERR: '+stderr)
-  })
+  // const git = childProcess.exec('git push --set-upstream origin feat-fs', function (error, stdout, stderr) {
+  //   if (error) {
+  //     console.log(error.stack)
+  //     console.log('Error code: '+error.code)
+  //     console.log('Signal received: '+error.signal)
+  //   }
+  //   console.log('Child Process STDOUT: '+stdout)
+  //   console.log('Child Process STDERR: '+stderr)
+  // })
 
-  git.on('exit', function (code) {
-    console.log('Child process exited with exit code '+code)
-  })
+  // git.on('exit', function (code) {
+  //   console.log('Child process exited with exit code '+code)
+  // })
 
   const args = process.argv.slice(2)
 
@@ -112,11 +112,11 @@ const main = () => {
       let entry = ''
       if(data.type.updateChangelog) {
         entry = data.type.name
-        if(!data.type.omitPrefix) {
+        if(data.type.includePrefix) {
           entry += `: ${data.message.prefix} `
         }
         entry += data.message.content
-        if(!data.type.omitPostfix) {
+        if(data.type.includePostfix) {
           entry += ' ' + data.message.postfix
         }
       }
