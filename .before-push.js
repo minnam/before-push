@@ -28,9 +28,6 @@ const config = {
 
       versionIndex: 0, // integer
       // Specifies which digit (index) of the changelog's version numbering to increment.
-
-      // level: 0,
-      // postfix: '',      
     },
     {
       name: 'Feature',
@@ -60,9 +57,6 @@ const config = {
 
       versionIndex: 0, // integer
       // Specifies which digit (index) of the changelog's version numbering to increment.
-
-      // level: 1,
-      // postfix: ''
     },
     {
       name: 'Fix',
@@ -92,9 +86,6 @@ const config = {
 
       versionIndex: 0, // integer
       // Specifies which digit (index) of the changelog's version numbering to increment.
-
-      // level: 2,
-      // postfix: '',
     },
     {
       name: 'Docs',
@@ -124,9 +115,6 @@ const config = {
 
       versionIndex: 0, // integer
       // Specifies which digit (index) of the changelog's version numbering to increment.
-
-      // level: 2,
-      // postfix: '',
     },
     {
       name: 'Style',
@@ -156,9 +144,6 @@ const config = {
 
       versionIndex: 0, // integer
       // Specifies which digit (index) of the changelog's version numbering to increment.
-
-      // level: 2,
-      // postfix: '',
     },
     {
       name: 'Refactor',
@@ -188,9 +173,6 @@ const config = {
 
       versionIndex: 0, // integer
       // Specifies which digit (index) of the changelog's version numbering to increment.
-
-      // level: 2,
-      // postfix: '',
     },
     {
       name: 'Test',
@@ -220,9 +202,6 @@ const config = {
 
       versionIndex: 0, // integer
       // Specifies which digit (index) of the changelog's version numbering to increment.
-
-      // level: 2,
-      // postfix: '',
     },
     {
       name: 'Chore',
@@ -252,9 +231,6 @@ const config = {
 
       versionIndex: 0, // integer
       // Specifies which digit (index) of the changelog's version numbering to increment.
-
-      // level: 2,
-      // postfix: '',
     }
   ],
   versionFormat: {
@@ -268,7 +244,7 @@ const config = {
     // Examples:
     // A version number like: 1.12.5 would use a format like: #.#.#
     // A version number like: 0-1-6.1 would use a format like: #-#-#.# 
-},
+  },
 }
 
 module.exports = config
