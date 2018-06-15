@@ -2,6 +2,7 @@ const config = {
   commitTypes: [
     {
       name: 'Phase',
+
       requireMessage: true, // boolean   
       // Specifies whether a commit message is required or not.
 
@@ -233,18 +234,7 @@ const config = {
       // Specifies which digit (index) of the changelog's version numbering to increment.
     }
   ],
-  versionFormat: {
-    useCustomVersion: false, // boolean
-    // Specifies if the version numbering displayed in the changelog should follow default numbering
-    // or the format specified in the 'custom' property.
-    
-    custom: '#.#.#' // string
-    // Defines a custom template for the changlog numbering.
-    // Digits are placed in the string at the locations designated by the '#' character.
-    // Examples:
-    // A version number like: 1.12.5 would use a format like: #.#.#
-    // A version number like: 0-1-6.1 would use a format like: #-#-#.# 
-  },
+  versionFormat: '#.#.#' // string
 }
 
 module.exports = config
