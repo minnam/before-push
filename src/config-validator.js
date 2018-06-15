@@ -73,6 +73,14 @@ class ConfigValidator {
       throw err
     }
   }
+  checkVersionFormat (format) {
+    if(check.not.maybe.boolean(format.useCustomVersion)) {
+      // throw error
+    }
+    if(check.not.maybe.string(format.custom)) {
+      // throw error
+    }
+  }
 }
 
 // console.log(check.maybe.boolean(this.config.commitTypes[0].requireMessage))
