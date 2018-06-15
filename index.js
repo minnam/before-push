@@ -14,11 +14,19 @@ const validations = {
 /* Main ========================================================================================= */
 const main = () => {
   try {
-    const cfgValidator = new ConfigValidator(config)
-    cfgValidator.checkConfig()
+    const cfgValidator = new ConfigValidator()
+    cfgValidator.checkConfig(config)
+    cfgValidator.checkType(config.defaultType)
+    const commitTypes = config.commitTypes.map(commitType => {
 
+      commitType = {
+        ...config.defaultType,
+        ...commitType
+      }
+      cfgValidator.checkType(commitType)
+      return commitType
+    })
     const promptManager = new PromptManager()
-
     promptManager.push(
       new SelectPrompt(
         {
@@ -37,7 +45,7 @@ const main = () => {
             }
           },
         },
-        config.commitTypes
+        commitTypes
       )
     )
     promptManager.push(
