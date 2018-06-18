@@ -59,20 +59,5 @@ class ConfigValidator {
     }
   }
 }
-// for(let i = 0; i < this.config.commitTypes.length; ++i) {
-//  console.log(this.config.commitTypes[i].versionIndex, this.config.versionFormat.custom.split('#').length - 1)
-//  if (!check.less(this.config.commitTypes[i].versionIndex, this.config.versionFormat.custom.split('#').length - 1)) {
-//    throw new Error(`7 object at commitTypes[${i}] has incorrect version format`)
-//  }
-//   if(
-//     !check.all(
-//       check.map(
-//         this.config.commitTypes[i],
-//         typeTemplate
-//       )
-//     )
-//   ) {
-//     throw new Error('asdfsadf')
-//   }
-// }
+
 module.exports = ConfigValidator

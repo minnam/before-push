@@ -2,32 +2,41 @@
 Command line interface for semantic versioning node application
 
 ## TODO
-- Validate config file
-- Update README.md with remaining config properties once they have been implemented
 - Export commits to CHANGELOG.md
 
 commitlog
 
 ## Configuring before-push
 The configuration file can be found in `.before-push.js`.
-The configuration settings are read from an object with
-the properties `commitTypes` and `versionFormat`.
-`commitTypes` is an array of objects which define what set of actions should be performed. `versionFormat` defines formatting in the changelog entries.
+`config` has the following properties:
+- defaultType
+- versionFormat
+- commitTypes
+
+The `defaultType` property is the template from which user-defined commit types inherit their values for any properties that are left `undefined` or `null`.
+
+The `versionFormat` string defines how the version numbering will be formatted in the changelog
+entries.
+
+The `commitTypes` array holds objects representing user-defined commit types.
 
 ### Adding a commit type
-New types of commits should be defined as objects in the `commitType` array. There are several valid properties you can assign to a commit object to define its behaviour. Properies marked with [OPTIONAL] are not required for the user-defined commit to be valid and if left out will result in the same behaviour as if the property was defined with a value of `false`.
+New types of commits should be defined as objects in the `commitType` array. There are several valid properties you can assign to a commit object to define its behaviour. These properties are as follows:
+- `name` < string > **Default:** `'default commit'`
+- `requireMessage` < boolean > **Default:** `true`
+- `requireMessagePrefix` < boolean > **Default:** `false`
+  - Will be treated as `false`, regardless of value if `requireMessage` is `false` or `undefined`.
+- `requrieMessagePostFix` < boolean > **Default:** `false`
+  - Will be treated as `false`, regardless of value if `requireMessage` is `false` or `undefined`.
+- `updateChangelog` < boolean > **Default:** `true`
+- `includePrefix` < boolean > **Default:** `false`
+  - Will be treated as `false`, regardless of value if `updateChangelog` is `false` or `undefined`.
+- `includePostfix` < boolean > **Default:** `false`
+  - Will be treated as `false`, regardless of value if `updateChangelog` is `false` or `undefined`.
+- `addDate` < boolean > **Default:** `false`
+  - Will be treated as `false`, regardless of value if `updateChangelog` is `false` or `undefined`.
+- `addVersionNumbering` < boolean > **Default:** `false`
+  - Will be treated as `false`, regardless of value if `updateChangelog` is `false` or `undefined`.
+- `versionIndex` < integer > **Default:** `0`
 
-**THESE ARE THE CURRENTLY IMPLEMENTED PROPERTIES**
-
-- name
-  - Type: string 
-  - Will be displayed when prompting for type selection.
-- requireMessage [OPTIONAL]
-  - type: boolean
-  - If true, will prompt the user to input a commit message.
-- requireMessagePrefix [OPTIONAL]
-  - type: boolean
-  - If true, will prompt the user to input text to be prepended to their commit message. Will default to `false` if `requireMessage`is `false` or `undefined`. 
-- requireMessagePostfix [OPTIONAL]
-  - type: boolean
-  - If true, will prompt the user to input text to be appended to their commit message. Will default to `false` if `requireMessage`is `false` or `undefined`. 
+If properties are left out of an object definition the are assigned their default value.

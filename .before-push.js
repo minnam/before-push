@@ -2,7 +2,7 @@ const config = {
   /**
    * defaultType
    * The template from which user-defined commit types inherit their
-   * values from for any properties that are left undeclared/undefined/null.
+   * values for any properties that are left undeclared/undefined/null.
    * 
    * DO NOT RENAME OR REMOVE ANY OF THIS OBJECT'S PROPERTIES.
    * 
